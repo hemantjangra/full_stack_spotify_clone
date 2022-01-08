@@ -5,7 +5,7 @@ import PlayerLayout from "../components/playerLayout";
 
 const theme = extendTheme({
   colors: {
-    gray: {
+    grey: {
       100: "#F5F5F5",
       200: "#EEEEEE",
       300: "#E0E0E0",
@@ -34,9 +34,11 @@ const theme = extendTheme({
 const MyApp = ({Component, pageProps}) => {
   return (
     <ChakraProvider theme={theme}>
-      <PlayerLayout>
-        <Component {...pageProps} />
-      </PlayerLayout>
+      {Component.authPage ? <Component {...pageProps} /> :
+        <PlayerLayout>
+          <Component {...pageProps} />
+        </PlayerLayout>
+      }
     </ChakraProvider>)
 }
 
