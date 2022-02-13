@@ -18,6 +18,8 @@ import {
   MdFavorite
 } from 'react-icons/md';
 
+import { usePlaylists } from "../lib/hooks";
+
 const navMenu = [
   {
     name: "Home",
@@ -49,9 +51,10 @@ const musicMenu = [
   }
 ]
 
-const playlists = new Array(30).fill(1).map((_, i)=>`Playlist_${i}`);
-
 const SideBar = () => {
+  const { playlists, isError, isLoading } = usePlaylists();
+  console.log('calling the playlist hook')
+  console.log('playlist data is ', playlists)
   return (
     <Box width="100%" height="calc(100vh - 100px)" bg="black" paddingX="5px">
       <Box width="120px" marginBottom="20px" paddingX="20px">
@@ -63,7 +66,7 @@ const SideBar = () => {
               <ListItem paddingX="20px" fontSize="16px" key={menu.name}>
                 <LinkBox>
                   <NextLink href={menu.route} passHref>
-                    <LinkOverlay>
+                    <LinkOverlay color="white">
                       <ListIcon as={menu.icon} color="white" marginRight="20px" />
                       { menu.name }
                     </LinkOverlay>
@@ -81,7 +84,7 @@ const SideBar = () => {
               <ListItem paddingX="20px" fontSize="16px" key={menu.name}>
                 <LinkBox>
                   <NextLink href={menu.route} passHref>
-                    <LinkOverlay>
+                    <LinkOverlay color="white">
                       <ListIcon as={menu.icon} color="white" marginRight="20px" />
                       { menu.name }
                     </LinkOverlay>
@@ -95,18 +98,18 @@ const SideBar = () => {
       <Divider color="grey.800" />
       <Box marginY="20px" height="66%" overflow="auto">
         <List>
-          {
-            playlists.map(playlist =>(
-              <ListItem key={ playlist }>
+          {playlists &&(
+            playlists.map(({id, name}) =>(
+              <ListItem key={ id }>
                 <LinkBox>
                   <NextLink href = "/" passHref>
                     <LinkOverlay marginX="20px" fontSize="12px" color="white">
-                      { playlist }
+                      { name }
                     </LinkOverlay>
                   </NextLink>
                 </LinkBox>
               </ListItem>
-            ))
+            )))
           }
         </List>
       </Box>
