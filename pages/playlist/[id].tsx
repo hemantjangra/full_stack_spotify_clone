@@ -63,7 +63,10 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
   } catch (error) {
     return {
-      notFound: true,
+      redirect: {
+        permanent: false,
+        destination: "/signin",
+      },
     };
   }
 };

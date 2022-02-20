@@ -6,7 +6,6 @@ import {
   ListItem,
   ListIcon,
   Divider,
-  Center,
   LinkBox,
   LinkOverlay,
 } from "@chakra-ui/layout";
@@ -52,7 +51,7 @@ const musicMenu = [
 ];
 
 const SideBar = () => {
-  const { playlists, isError, isLoading } = usePlaylists();
+  const { playlists } = usePlaylists();
   console.log("calling the playlist hook");
   console.log("playlist data is ", playlists);
   return (
@@ -93,8 +92,8 @@ const SideBar = () => {
           ))}
         </List>
       </Box>
-      <Divider color="grey.800" />
-      <Box marginY="20px" height="66%" overflow="auto">
+      <Divider color="gray.800" />
+      <Box paddingY="20px" height="66%" overflowY="auto">
         <List>
           {playlists &&
             playlists.map(({ id, name }) => (
