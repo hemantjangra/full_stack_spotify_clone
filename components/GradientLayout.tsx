@@ -23,8 +23,8 @@ export const GradientLayout: FC<IGradientLayoutProps> = ({
 }) => {
   return (
     <Box
-      height="100vh"
-      overflow="auto"
+      overflowY="auto"
+      height="calc(100vh - 100px)"
       bgGradient={`linear(${color}.500 0%, ${color}.600 15%, ${color}.700 40%, rgba(0,0,0,0.95) 75%)`}
     >
       <Flex bg={`${color}.600`} align="end" padding="40px">
