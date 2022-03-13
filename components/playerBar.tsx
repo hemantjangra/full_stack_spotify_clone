@@ -12,8 +12,8 @@ export const PlayerBar: FC<IPlayerBar> = () => {
   return (
     <Flex align="center">
       <Box width="30%" color="white" padding="10px">
-        <Text fontSize="large">Song</Text>
-        <Text fontSize="small">Artist</Text>
+        <Text fontSize="large">{activeSong?.name}</Text>
+        <Text fontSize="small">{activeSong?.artist?.name}</Text>
       </Box>
       <Box width="40%">
         <Player songs={songs} activeSong={activeSong} />

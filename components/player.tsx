@@ -44,7 +44,7 @@ export const Player: FC<IPlayer> = ({ songs, activeSong }) => {
   const [isSeeking, setIsSeeking] = useState<boolean>(false);
 
   useEffect(() => {
-    setActiveSong(index);
+    setActiveSong(songs[index]);
   }, [index, setActiveSong, songs]);
 
   useEffect(() => {
@@ -59,8 +59,6 @@ export const Player: FC<IPlayer> = ({ songs, activeSong }) => {
     }
     cancelAnimationFrame(timerId);
   }, [playing, isSeeking]);
-
-  console.log("active song is", activeSong);
 
   const prevSong = () => {
     setIndex((state) => (state === 0 ? songs.length - 1 : state - 1));
